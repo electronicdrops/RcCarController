@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#fff"
+    tools:context="bluecontrol.game.olivato.bluetoothcontroller.MainActivity">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/up"
+        android:src="@mipmap/up"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/stop"
+        android:layout_alignStart="@+id/stop"
+        android:onClick="parafrente"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/upright"
+        android:src="@mipmap/upright"
+        android:layout_alignTop="@+id/up"
+        android:layout_toRightOf="@+id/up"
+        android:layout_toEndOf="@+id/up"
+        android:onClick="upnright"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/upleft"
+        android:src="@mipmap/upleft"
+        android:layout_alignTop="@+id/up"
+        android:layout_toLeftOf="@+id/up"
+        android:layout_toStartOf="@+id/up"
+        android:onClick="upnleft"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/left"
+        android:src="@mipmap/left"
+        android:layout_below="@+id/upleft"
+        android:layout_alignLeft="@+id/upleft"
+        android:layout_alignStart="@+id/upleft"
+        android:onClick="paraleft"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/downleft"
+        android:src="@mipmap/downleft"
+        android:layout_below="@+id/left"
+        android:layout_toLeftOf="@+id/up"
+        android:layout_toStartOf="@+id/up"
+        android:onClick="downnleft"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/down"
+        android:layout_alignBottom="@+id/downleft"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/down"
+        android:onClick="paratras"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/downright"
+        android:layout_alignBottom="@+id/down"
+        android:layout_toRightOf="@+id/down"
+        android:layout_toEndOf="@+id/down"
+        android:src="@mipmap/downright"
+        android:onClick="downnright"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/right"
+        android:src="@mipmap/right"
+        android:layout_above="@+id/downright"
+        android:layout_toRightOf="@+id/down"
+        android:layout_toEndOf="@+id/down"
+        android:onClick="pararight"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/stop"
+        android:layout_alignBottom="@+id/left"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/stop"
+        android:onClick="para"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/connect"
+        android:onClick="conectar"
+        android:src="@mipmap/conectar"
+        android:layout_above="@+id/up"
+        android:layout_alignLeft="@+id/upleft"
+        android:layout_alignStart="@+id/upleft" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/imageView"
+        android:src="@mipmap/disconnect"
+        android:layout_above="@+id/up"
+        android:layout_toRightOf="@+id/up"
+        android:layout_toEndOf="@+id/up" />
+
+</RelativeLayout>
