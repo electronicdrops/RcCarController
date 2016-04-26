@@ -11,10 +11,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
-
 import java.io.IOException;
 import java.util.Set;
-
+/*Criado por: Gabriel Olivato || Agradecimentos especiais para: Danilo Queiroz Barbosa , Lucas Baquião , Marcelo Almeida , Mr. Anderson , Juliano Mechanics , Jão and others...*/
 public class MainActivity extends Activity {
 
     @Override
