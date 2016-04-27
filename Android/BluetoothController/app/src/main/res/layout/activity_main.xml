@@ -18,7 +18,8 @@
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/stop"
         android:layout_alignStart="@+id/stop"
-        android:onClick="parafrente"/>
+        android:onClick="clickerclicker"
+        />
 
     <ImageView
         android:layout_width="100dp"
@@ -28,7 +29,8 @@
         android:layout_alignTop="@+id/up"
         android:layout_toRightOf="@+id/up"
         android:layout_toEndOf="@+id/up"
-        android:onClick="upnright"/>
+        android:onClick="clickerclicker"
+        />
 
     <ImageView
         android:layout_width="100dp"
@@ -38,7 +40,8 @@
         android:layout_alignTop="@+id/up"
         android:layout_toLeftOf="@+id/up"
         android:layout_toStartOf="@+id/up"
-        android:onClick="upnleft"/>
+        android:onClick="clickerclicker"
+        />
 
     <ImageView
         android:layout_width="100dp"
@@ -48,7 +51,8 @@
         android:layout_below="@+id/upleft"
         android:layout_alignLeft="@+id/upleft"
         android:layout_alignStart="@+id/upleft"
-        android:onClick="paraleft"/>
+        android:onClick="clickerclicker"
+        />
 
     <ImageView
         android:layout_width="100dp"
@@ -58,7 +62,8 @@
         android:layout_below="@+id/left"
         android:layout_toLeftOf="@+id/up"
         android:layout_toStartOf="@+id/up"
-        android:onClick="downnleft"/>
+        android:onClick="clickerclicker"
+        />
 
     <ImageView
         android:layout_width="100dp"
@@ -67,7 +72,8 @@
         android:layout_alignBottom="@+id/downleft"
         android:layout_centerHorizontal="true"
         android:src="@mipmap/down"
-        android:onClick="paratras"/>
+        android:onClick="clickerclicker"
+        />
 
     <ImageView
         android:layout_width="100dp"
@@ -77,7 +83,8 @@
         android:layout_toRightOf="@+id/down"
         android:layout_toEndOf="@+id/down"
         android:src="@mipmap/downright"
-        android:onClick="downnright"/>
+        android:onClick="clickerclicker"
+        />
 
     <ImageView
         android:layout_width="100dp"
@@ -87,7 +94,8 @@
         android:layout_above="@+id/downright"
         android:layout_toRightOf="@+id/down"
         android:layout_toEndOf="@+id/down"
-        android:onClick="pararight"/>
+        android:onClick="clickerclicker"
+        />
 
     <ImageView
         android:layout_width="100dp"
@@ -96,14 +104,16 @@
         android:layout_alignBottom="@+id/left"
         android:layout_centerHorizontal="true"
         android:src="@mipmap/stop"
-        android:onClick="para"/>
+        android:onClick="clickerclicker"
+        />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spinner"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+         />
 
     <ImageView
         android:layout_width="100dp"
@@ -113,7 +123,8 @@
         android:src="@mipmap/conectar"
         android:layout_above="@+id/up"
         android:layout_alignLeft="@+id/upleft"
-        android:layout_alignStart="@+id/upleft" />
+        android:layout_alignStart="@+id/upleft"
+        />
 
     <ImageView
         android:layout_width="100dp"
@@ -122,6 +133,7 @@
         android:src="@mipmap/disconnect"
         android:layout_above="@+id/up"
         android:layout_toRightOf="@+id/up"
-        android:layout_toEndOf="@+id/up" />
+        android:layout_toEndOf="@+id/up"
+        android:onClick="desconecta"/>
 
 </RelativeLayout>

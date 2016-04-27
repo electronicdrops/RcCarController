@@ -42,14 +42,16 @@ public class MainActivity extends Activity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-
                         para.setImageAlpha(20);
+                        ToothReadWrite.WriteBuffer((byte) 0);
+
 
 
                         break;
                     case MotionEvent.ACTION_UP:
-
                         para.setImageAlpha(255);
+                        ToothReadWrite.WriteBuffer((byte)0);
+
                         break;
                 }
                 return false;
@@ -61,16 +63,21 @@ public class MainActivity extends Activity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-
                         left.setImageAlpha(100);
+                        ToothReadWrite.WriteBuffer((byte)4);
+
 
 
                         break;
                     case MotionEvent.ACTION_UP:
-
                         left.setImageAlpha(255);
+
+                        Log.v("MANDA:","0");
+                        ToothReadWrite.WriteBuffer((byte)0);
+
                         break;
                 }
+
                 return false;
             }
         });
@@ -79,12 +86,15 @@ public class MainActivity extends Activity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
+                        right.setImageAlpha(100);
+                        ToothReadWrite.WriteBuffer((byte)8);
 
-                            right.setImageAlpha(100);
 
                         break;
                     case MotionEvent.ACTION_UP:
                         right.setImageAlpha(255);
+                        ToothReadWrite.WriteBuffer((byte)0);
+
                         break;
                 }
                 return false;
@@ -95,12 +105,15 @@ public class MainActivity extends Activity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
+                        up.setImageAlpha(100);
+                        ToothReadWrite.WriteBuffer((byte)1);
 
-                            up.setImageAlpha(100);
 
                         break;
                     case MotionEvent.ACTION_UP:
                         up.setImageAlpha(255);
+                        ToothReadWrite.WriteBuffer((byte)0);
+
 
                         break;
                 }
@@ -112,11 +125,18 @@ public class MainActivity extends Activity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
+                        down.setImageAlpha(100);
 
-                            down.setImageAlpha(100);
+                            ToothReadWrite.WriteBuffer((byte)2);
+
+
                         break;
                     case MotionEvent.ACTION_UP:
                         down.setImageAlpha(255);
+
+                        ToothReadWrite.WriteBuffer((byte)0);
+
+
                         break;
                 }
                 return false;
@@ -129,9 +149,15 @@ public class MainActivity extends Activity {
                     case MotionEvent.ACTION_DOWN:
                         downleft.setImageAlpha(100);
 
+                        ToothReadWrite.WriteBuffer((byte)6);
+
+
                         break;
                     case MotionEvent.ACTION_UP:
                         downleft.setImageAlpha(255);
+
+                        ToothReadWrite.WriteBuffer((byte)0);
+
 
                         break;
                 }
@@ -145,9 +171,14 @@ public class MainActivity extends Activity {
                     case MotionEvent.ACTION_DOWN:
                         downright.setImageAlpha(100);
 
+                        ToothReadWrite.WriteBuffer((byte)10);
+
+
                         break;
                     case MotionEvent.ACTION_UP:
                         downright.setImageAlpha(255);
+                        ToothReadWrite.WriteBuffer((byte)0);
+
 
                         break;
                 }
@@ -158,12 +189,17 @@ public class MainActivity extends Activity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
+
                     case MotionEvent.ACTION_DOWN:
                         upleft.setImageAlpha(100);
+                        ToothReadWrite.WriteBuffer((byte)5);
+
 
                         break;
                     case MotionEvent.ACTION_UP:
                         upleft.setImageAlpha(255);
+                        ToothReadWrite.WriteBuffer((byte)0);
+
 
                         break;
                 }
@@ -176,10 +212,14 @@ public class MainActivity extends Activity {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         upright.setImageAlpha(100);
+                        ToothReadWrite.WriteBuffer((byte)9);
+
 
                         break;
                     case MotionEvent.ACTION_UP:
                         upright.setImageAlpha(255);
+                        ToothReadWrite.WriteBuffer((byte)0);
+
 
                         break;
                 }
@@ -239,43 +279,14 @@ public class MainActivity extends Activity {
         }
 
     }
-
-    public void para(View view)
-    {
-        ToothReadWrite.WriteBuffer("0");
-    }
-    public void parafrente(View view){ToothReadWrite.WriteBuffer("1");}
-    public void paratras(View view)
-    {
-        ToothReadWrite.WriteBuffer("2");
-    }
-    public void paraleft(View view)
-    {
-        ToothReadWrite.WriteBuffer("4");
-    }
-    public void pararight(View view)
-    {
-        ToothReadWrite.WriteBuffer("8");
-    }
-    public void upnright(View view)
-    {
-        ToothReadWrite.WriteBuffer("9");
-    }
-    public void upnleft(View view)
-    {
-        ToothReadWrite.WriteBuffer("5");
-    }
-    public void downnright(View view)
-    {
-        ToothReadWrite.WriteBuffer("10");
-    }
-    public void downnleft(View view)
-    {
-        ToothReadWrite.WriteBuffer("6");
-    }
-    public void disconectar(View view)
+    public void desconecta(View view)
     {
         ToothReadWrite.disconnect();
+
+    }
+    public void clickerclicker(View view)
+    {
+
     }
 
 }

@@ -108,6 +108,21 @@ public class ToothReadWrite {
 
     }
 
+    public static void WriteBuffer(byte msg)
+    {
+        try
+        {
+            outstream.write(msg);
+        }
+        catch (Exception e)
+        {
+            Log.v("ERRO:",e.toString());
+        }
+
+    }
+
+
+
 
     /*------- ESSA DESGRAÇA ME DEU MUITO TRABALHO E SERVE PRA LER AS CAPOEIRA QUE CHEGA
               PRA VC USAR SEU ANIMAL É SÓ JOGAR EM UM TEXTVIEW+COUNTDOWNTIMER -------*/
