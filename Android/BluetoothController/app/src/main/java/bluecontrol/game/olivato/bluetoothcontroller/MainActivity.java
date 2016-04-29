@@ -1,14 +1,19 @@
 package bluecontrol.game.olivato.bluetoothcontroller;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import java.io.IOException;
@@ -22,8 +27,6 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         if (ToothReadWrite.statusTooth() != true) {
             liga_bluetooth();
-        } else {
-            pegaPareados();
         }
 
         final ImageView left = (ImageView) findViewById(R.id.left);
@@ -228,48 +231,90 @@ public class MainActivity extends Activity {
         });
 
     }
-
-    public void pegaPareados() {
-        int i = 0;
-        Set<BluetoothDevice> pareados = ToothReadWrite.Pareados();
-
-        if (pareados.size() > 0) {
-            for (BluetoothDevice device : pareados) {
-                i++;
-            }
-        }
-
-        String address[] = new String[i];
-        String names[] = new String[i];
-        i = 0;
-        if (pareados.size() > 0) {
-            for (BluetoothDevice device : pareados) {
-                names[i] = device.getName() + "#" + device.getAddress();
-                i++;
-            }
-        }
-
-        Spinner lista_de_dispositivos = (Spinner) findViewById(R.id.spinner);
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, names);
-        lista_de_dispositivos.setAdapter(spinnerArrayAdapter);
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
-    public void conectar(View view) throws IOException {
-        ImageView botao = (ImageView)findViewById(R.id.connect);
-        Spinner lista_de_dispositivos = (Spinner) findViewById(R.id.spinner);
-        String[] mac = lista_de_dispositivos.getSelectedItem().toString().split("#");
 
-        botao.setImageAlpha(20);
-        try {
-
-            ToothReadWrite.Connect(mac[1].trim());
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
 
-        } catch (Exception e) {
+        switch (item.getItemId()) {
+            case R.id.conectar:
+            {
+                if (ToothReadWrite.statusTooth() != true) {
+                    liga_bluetooth();
+                } else {
+
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle("Dispositivos Pareados");
+
+
+                    final EditText input = new EditText(this);
+
+
+                    int i = 0;
+                    Set<BluetoothDevice> pareados = ToothReadWrite.Pareados();
+
+                    if (pareados.size() > 0) {
+                        for (BluetoothDevice device : pareados) {
+                            i++;
+                        }
+                    }
+
+                    String address[] = new String[i];
+                    final String names[] = new String[i];
+                    i = 0;
+                    if (pareados.size() > 0) {
+                        for (BluetoothDevice device : pareados) {
+                            names[i] = device.getName() + "#" + device.getAddress();
+                            i++;
+                        }
+                    }
+                    builder.setItems(names, new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            dialog.dismiss();
+                            String[] mac = names[which].toString().split("#");
+                            try {
+
+                                ToothReadWrite.Connect(mac[1].trim());
+
+
+                            } catch (Exception e) {
+
+                            }
+
+                        }
+
+                    });
+
+
+                    builder.show();
+
+                }
+
+                break;
+            }
+            case R.id.disconectar:
+            {
+
+                ToothReadWrite.disconnect();
+                break;
+            }
+
+
+
+
+
 
         }
-
-
+        return true;
     }
 
     public void liga_bluetooth() {
