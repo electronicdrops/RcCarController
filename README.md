@@ -10,13 +10,10 @@
  * Trás(2)
  * Esquerda(4)
  * Direita(8)
- * 
- *  
+
  * FrenteEsquerda(5)
  * FrenteDireita(9)
  * TrásEsquerda(6)
  * TrásDireita(10)
- * 
-
   * Farol(16)
   * Buzina(32)
