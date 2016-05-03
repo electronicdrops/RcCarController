@@ -134,13 +134,21 @@ byte stabilityTimeLeft; // variavel de tempo de estabilizacao da Esquerda
 byte stabilityTimeRight; // variavel de tempo de estabilizacao da Direita
 
 
-
+bool trigger_on = false;
 int mode;
 
 //interrupt
 unsigned long currentMicros  = 0;
 
 void setup() {
+
+
+
+  pinMode(ANTENNA, OUTPUT);
+  pinMode(STATUS_LED, OUTPUT);
+    
+
+
 
  // pinos das lampadas e da buzina
  pinMode(headlight, OUTPUT);
@@ -171,7 +179,7 @@ void loop()
   if (mySerial.available())
     {
     command = mySerial.read(); // recebe o byte da serial
-
+    trigger_on = true;
     /*
      * Utilizando a operacao &, somente o bit correspondente e retor-
      *nara e sera transformado em 0 ou 1 pela operacao 'bool'
@@ -221,10 +229,9 @@ void loop()
         }
         else{
           mode = ENDCODE;
+          trigger_on = false;
         }
 
-
-        trigger(mode); //executa a funcao de envio de codigo
 
 
 /* Se a estabilizacao por software estiver ativada as funcionalidades
@@ -284,7 +291,12 @@ void loop()
     
     
   } //if (mySerial.available())
-  
+
+
+    if(trigger_on)        
+        trigger(mode); //executa a funcao de envio de codigo
+
+
  } // void loop ()
  
 
