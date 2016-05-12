@@ -1,0 +1,66 @@
+[
+    {
+        "merged": "/media/tic/x-files/BluetoothController/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/upright.png",
+        "source": "/media/tic/x-files/BluetoothController/app/src/main/res/mipmap-hdpi/upright.png"
+    },
+    {
+        "merged": "/media/tic/x-files/BluetoothController/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/downleft.png",
+        "source": "/media/tic/x-files/BluetoothController/app/src/main/res/mipmap-hdpi/downleft.png"
+    },
+    {
+        "merged": "/media/tic/x-files/BluetoothController/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/icon_new.png",
+        "source": "/media/tic/x-files/BluetoothController/app/src/main/res/mipmap-hdpi/icon_new.png"
+    },
+    {
+        "merged": "/media/tic/x-files/BluetoothController/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/connect.png",
+        "source": "/media/tic/x-files/BluetoothController/app/src/main/res/mipmap-hdpi/connect.png"
+    },
+    {
+        "merged": "/media/tic/x-files/BluetoothController/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/downright.png",
+        "source": "/media/tic/x-files/BluetoothController/app/src/main/res/mipmap-hdpi/downright.png"
+    },
+    {
+        "merged": "/media/tic/x-files/BluetoothController/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/disconnect.png",
+        "source": "/media/tic/x-files/BluetoothController/app/src/main/res/mipmap-hdpi/disconnect.png"
+    },
+    {
+        "merged": "/media/tic/x-files/BluetoothController/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/left.png",
+        "source": "/media/tic/x-files/BluetoothController/app/src/main/res/mipmap-hdpi/left.png"
+    },
+    {
+        "merged": "/media/tic/x-files/BluetoothController/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/upleft.png",
+        "source": "/media/tic/x-files/BluetoothController/app/src/main/res/mipmap-hdpi/upleft.png"
+    },
+    {
+        "merged": "/media/tic/x-files/BluetoothController/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/ic_launcher.png",
+        "source": "/media/tic/x-files/BluetoothController/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/media/tic/x-files/BluetoothController/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/stop.png",
+        "source": "/media/tic/x-files/BluetoothController/app/src/main/res/mipmap-hdpi/stop.png"
+    },
+    {
+        "merged": "/media/tic/x-files/BluetoothController/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/up.png",
+        "source": "/media/tic/x-files/BluetoothController/app/src/main/res/mipmap-hdpi/up.png"
+    },
+    {
+        "merged": "/media/tic/x-files/BluetoothController/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/down.png",
+        "source": "/media/tic/x-files/BluetoothController/app/src/main/res/mipmap-hdpi/down.png"
+    },
+    {
+        "merged": "/media/tic/x-files/BluetoothController/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/right.png",
+        "source": "/media/tic/x-files/BluetoothController/app/src/main/res/mipmap-hdpi/right.png"
+    },
+    {
+        "merged": "/media/tic/x-files/BluetoothController/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/conectarpressed.png",
+        "source": "/media/tic/x-files/BluetoothController/app/src/main/res/mipmap-hdpi/conectarpressed.png"
+    },
+    {
+        "merged": "/media/tic/x-files/BluetoothController/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/icon.png",
+        "source": "/media/tic/x-files/BluetoothController/app/src/main/res/mipmap-hdpi/icon.png"
+    },
+    {
+        "merged": "/media/tic/x-files/BluetoothController/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/conectar.png",
+        "source": "/media/tic/x-files/BluetoothController/app/src/main/res/mipmap-hdpi/conectar.png"
+    }
+]
