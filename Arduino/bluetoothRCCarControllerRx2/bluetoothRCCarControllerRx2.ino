@@ -153,9 +153,6 @@ void setup() {
  digitalWrite(backlight,LOW);
  noTone(buzzer);
 
-stability = 1;
-stabilityTimeLeft = 16;
-stabilityTimeRight = 16;
 
 // Ativando a serial de conexao com o bluetooth.    
   mySerial.begin(9600);
@@ -227,32 +224,9 @@ void loop()
         trigger(mode); //executa a funcao de envio de codigo
 
 
-/* Se a estabilizacao por software estiver ativada as funcionalidades
- * serao executadas.
- * O motor da direcao serao ativados por um breve periodo de tempo e 
- * desativado logo em seguida.
- */
-    if(stability){
-      // estavilizacao para a direita.
-      if((!right) && (rightState)){
-          trigger(LEFT); // envia codigo para esquerda
-          delay(stabilityTimeRight);  
-          trigger(ENDCODE);
-          rightState = 0;
-        }
-
-      //estabilizacao para a esquerda.
-      if((!left) && (leftState)){
-          trigger(RIGHT);
-          delay(stabilityTimeLeft);  
-          trigger(ENDCODE);
-          leftState = 0;
-        }
-    } //if(stability){
-
 
 /*
- * Acionamento das luzes. O farol tera 3 niveis. Como esta com PWM
+ * Acionamento das luzes. O farol terao 3 niveis. Como esta com PWM
  * sera acionado em multiplos de 85 indicado pelo lightsState
  */
 
@@ -289,6 +263,8 @@ void loop()
  
 
 
+
+//Funcao que executa gera o comando para ser enviado ao RX2
 void trigger(int mode) {
   
   //start code sequence
