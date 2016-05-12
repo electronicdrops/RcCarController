@@ -120,6 +120,7 @@ void setup()
  digitalWrite(backlight,LOW);
  noTone(buzzer);
 
+
 stability = 1;
 stabilityTimeLeft = 10;
 stabilityTimeRight = 16;

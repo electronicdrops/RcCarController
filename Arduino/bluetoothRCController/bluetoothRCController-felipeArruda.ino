@@ -1,40 +1,12 @@
-/*ESTE CODIGO E BASEADO NO PROJETO CRIADO PELO David Bernier, CON-
- * FORME INFORMACOES ABAIXO.
- * 
- * Do sketch original, somente as definicoes e a funcao 'trigger'
- * foram utilizadas.
- */
-
 /*
-    Realtek RX2 (RX2B) Control via Arduino
- 
-    Written by David Bernier, Aug. 26, 2013
-    https://github.com/monsieurDavid/
-    GPL v3 License
-    
-    This is a hack to send two different pulse trains to a RX2-driven
-    RC toy car by an Arduino.
-    
-    Non-PWM code based upon:
-    http://forum.arduino.cc/index.php?topic=171238.msg1274631#msg1274631
-    
-    Pins:
-      Pin 9 or 10 to toy's antenna
-      Pin 10 or 9 to LED
-      Arduino's GND to toy's GND
-
-*/
-
-/*
- * criado: 201605022157
- * atualizado: 201605022157
- *
- * Este sketch e a segunda versao para controlar um carro de contro-
- * le remoto atraves do arduino. Neste modo a parte eletronica do
- * carrinho continua a mesma nao precisando retirar nada. O arduino
- * tera um pino conectado a antena do carrinho que enviara os sinais
- * para serem decodificados pela parte eletronica. Nesta versao
- * o controle original podera continuar ser utilizado.
+ * 201605021932
+ * Este sketch e a primeira versao de comando de uma carro de
+ * controle remoto por arduino.
+ * A ideia e utilizar o arduino para realizar as mesmas funcoes
+ * do controle remoto padrao e poder adicionar novas funcionalidades
+ * que nao se encontram na versao original de fabrica
+ * O controle remoto padrao foi substituido por uma bluetooth
+ * shield.
  * 
  * FUNCIONAMENTO GERAL
  * 
@@ -69,7 +41,6 @@
  */
 
 
-
 /*
  * Para que a serial do Arduino continue livre para DEBUG, utiliza-
  * remos uma serial via software, utilizando os pinos 7,8 que não
@@ -79,33 +50,24 @@
 
 SoftwareSerial mySerial(7, 8); // RX, TX
 
+/*
+ * Nesta versao estamos utilizando um motorshield que controla ate 02
+ * motores DC atraves dos pinos IN1, IN2,IN3,IN4.
+ */
 
-
-//Fixed durations as per RX2B datasheet see http://www.datasheetdir.com/RX-2B+download
-
-//W1
-#define ENDCODE         4
-#define FORWARD        10
-#define FORWARD_TURBO  16
-#define TURBO          22
-#define FORWARD_LEFT   28
-#define FORWARD_RIGHT  34
-#define BACKWARD       40
-#define BACKWARD_RIGHT 46
-#define BACKWARD_LEFT  52
-#define LEFT           58
-#define RIGHT          64
-
-//output pins
-#define ANTENNA     9
-#define STATUS_LED 13
-
+// Pinos de controle do motorshield LN298D
+// Os pinos escolhidos sao PWM uma possivel futura funcionalidade.
+int IN1 = 3; // para frente
+int IN2 = 5; // para tras
+int IN3 = 6; // vira esquerda
+int IN4 = 9; // vira direita
 
 
 int headlight = 11; // o farol sera ligado no pino 11 pwm e tera 3
                     // niveis de intensidade.
 int backlight = 12; // sao as luzes traseiras 
-int buzzer = 10; // buzina do carrinho.
+int buzzer = 10;    // buzina do carrinho.
+
 
 /*
  * rightState e leftState serao utilizadas para saber se o carro
@@ -133,41 +95,39 @@ bool stability; // controle de estabilizacao
 byte stabilityTimeLeft; // variavel de tempo de estabilizacao da Esquerda
 byte stabilityTimeRight; // variavel de tempo de estabilizacao da Direita
 
+void setup()
+{
 
-bool trigger_on = false;
-int mode;
+ //Configurando os pinos de saida do motorshield 
+ pinMode(IN1, OUTPUT);
+ pinMode(IN2, OUTPUT);
+ pinMode(IN3, OUTPUT);
+ pinMode(IN4, OUTPUT);
 
-//interrupt
-unsigned long currentMicros  = 0;
-
-void setup() {
-
-
-
-  pinMode(ANTENNA, OUTPUT);
-  pinMode(STATUS_LED, OUTPUT);
-    
-
-
-
- // pinos das lampadas e da buzina
+// pinos das lampadas e da buzina
  pinMode(headlight, OUTPUT);
  pinMode(backlight, OUTPUT);
  pinMode(buzzer,OUTPUT);
 
+// desativando todas as ligacoes dos motores
+ digitalWrite(IN1,LOW);
+ digitalWrite(IN2,LOW);
+ digitalWrite(IN3,LOW);
+ digitalWrite(IN4,LOW);
 
 // desativando som da buzina e luzes
  digitalWrite(headlight,LOW);
  digitalWrite(backlight,LOW);
  noTone(buzzer);
 
+stability = 1;
+stabilityTimeLeft = 16;
+stabilityTimeRight = 16;
 
 // Ativando a serial de conexao com o bluetooth.    
   mySerial.begin(9600);
-
+  Serial.begin(9600);
 }
-
-
 
 void loop() 
 {  
@@ -176,7 +136,8 @@ void loop()
   if (mySerial.available())
     {
     command = mySerial.read(); // recebe o byte da serial
-    trigger_on = true;
+    Serial.write(command);
+
     /*
      * Utilizando a operacao &, somente o bit correspondente e retor-
      *nara e sera transformado em 0 ou 1 pela operacao 'bool'
@@ -188,8 +149,6 @@ void loop()
     lights =  bool(command & 16);  //bit 5
     buzzerOn = bool(command & 32); //bit 6
 
-
-
     
     //Se o comando de direcao for enviado, sera ativado o estado
     // correspondente, direita ou esquerda
@@ -199,41 +158,85 @@ void loop()
     if(left)
         leftState = 1;
 
-    
+    /*
     //Neste ponto os motores serao acionados.
+    digitalWrite(IN3,left);
+    digitalWrite(IN4,right); 
+    digitalWrite(IN1,front);
+    digitalWrite(IN2,back);
+
+
+*/
+
+ if(front){
+    digitalWrite(IN1,HIGH);
+    digitalWrite(IN2,LOW);
+    digitalWrite(IN3,LOW);
+    digitalWrite(IN4,HIGH); 
     
-    if(front){
-      mode = FORWARD;
-      if(right){
-        mode = FORWARD_RIGHT;
-      } else if(left){
-        mode = FORWARD_LEFT;
-        }          
-      }
-      else if(back){
-        mode = BACKWARD;
-        if(right){
-          mode = BACKWARD_RIGHT;
-        } else if(left){
-          mode = BACKWARD_LEFT;
-          }          
-      }
-      else if(right){
-        mode = RIGHT;
-      }
-        else if (left){
-          mode = LEFT;
-        }
-        else{
-          mode = ENDCODE;
-          trigger_on = false;
-        }
+  
+  }
+ else if(back){
+
+    digitalWrite(IN1,LOW);
+    digitalWrite(IN2,HIGH);
+    digitalWrite(IN3,HIGH);
+    digitalWrite(IN4,LOW); 
+  
+  
+  } else if(right){
+
+    //digitalWrite(IN1,LOW);
+    //digitalWrite(IN2,HIGH);
+    digitalWrite(IN3,LOW);
+    digitalWrite(IN4,HIGH); 
+
+    }else if(left){
+
+    digitalWrite(IN1,HIGH);
+    digitalWrite(IN2,LOW);
+  //  digitalWrite(IN3,HIGH);
+  //  digitalWrite(IN4,LOW); 
+    
+    }  
+  else{
+     digitalWrite(IN1,LOW);
+    digitalWrite(IN2,LOW);
+    digitalWrite(IN3,LOW);
+    digitalWrite(IN4,LOW);
+    
+    }
+   
 
 
+
+
+/* Se a estabilizacao por software estiver ativada as funcionalidades
+ * serao executadas.
+ * O motor da direcao serao ativados por um breve periodo de tempo e 
+ * desativado logo em seguida.
+ */
+    if(stability){
+      // estavilizacao para a direita.
+      if((!right) && (rightState)){
+          digitalWrite(IN3,HIGH);
+          delay(stabilityTimeRight);  
+          digitalWrite(IN3,LOW);
+          rightState = 0;
+        }
+
+      //estabilizacao para a esquerda.
+      if((!left) && (leftState)){
+          digitalWrite(IN4,HIGH);
+          delay(stabilityTimeLeft);  
+          digitalWrite(IN4,LOW);
+          leftState = 0;
+        }
+    } //if(stability){
 
 
 /*
- * Acionamento das luzes. O farol terao 3 niveis. Como esta com PWM
+ * Acionamento das luzes. O farol tera 3 niveis. Como esta com PWM
  * sera acionado em multiplos de 85 indicado pelo lightsState
  */
 
@@ -261,48 +264,8 @@ void loop()
       }
       
     } //if(buzzerOn){   
-
-    
     
   } //if (mySerial.available())
-
-
-    if(trigger_on)        
-        trigger(mode); //executa a funcao de envio de codigo
-
-
+  
  } // void loop ()
- 
 
-
-
-//Funcao que executa gera o comando para ser enviado ao RX2
-void trigger(int mode) {
-  
-  //start code sequence
-  for (int w2 = 0; w2 < 4; w2++) {
-    currentMicros = micros();
-    while (micros() - currentMicros < 1500) {
-      digitalWrite(ANTENNA, HIGH);
-      digitalWrite(STATUS_LED, HIGH);
-    }
-    while (micros() - currentMicros < 2000) {
-      digitalWrite(ANTENNA, LOW);
-      digitalWrite(STATUS_LED, LOW);
-    }
-  }
-  
-  //function code sequence
-  for (int w1 = 0; w1 < mode; w1++) {
-    currentMicros = micros();
-    while (micros() - currentMicros < 500) {
-      digitalWrite(ANTENNA, HIGH);
-      digitalWrite(STATUS_LED, HIGH);
-    }
-    while (micros() - currentMicros < 1000) {
-      digitalWrite(ANTENNA, LOW);
-      digitalWrite(STATUS_LED, LOW);
-    }
-  }
-
-}
