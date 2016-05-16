@@ -20,8 +20,10 @@ link dos vídeos de apreentação do projeto no youtube: https://www.youtube.com
 Esses códigos são pegos pelo sketch do Arduino e executa suas funções correspondentes.
 
 Existem 3 versões do Sketch do Arduíno para este projeto.
+
 1 - MotorShieldL298D:
    - O sketch que está nesta pasta é correspondente a versão que retira toda a eletrônica do Carrinho de Controle Remoto e comanda os motores através de um shield de Dupla ponte H. Este sketch pode ser alterado para controlar qualquer tipo de carrinho que possua motores e um motorshield.
+
 2 - SmartCar2w:
    - O sketch desta página já está modificado para funcionar com o projeto smart car 2w que é movimentado por dois motores nas rodas, ou por um que tenha 4 rodas mas motores somente em duas delas.
 
