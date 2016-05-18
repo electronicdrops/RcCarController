@@ -2,10 +2,13 @@
 ### Controlado por Arduino + Android + Bluetooth
 ####Tudo disponível aqui para seu conhecimento!
 
+#####P.S:Caso deseja apenas o aplicativo acesse: https://play.google.com/store/apps/details?id=bluecontrol.game.olivato.bluetoothcontroller&hl=pt_BR 
+
 link dos vídeos de apreentação do projeto no youtube: https://www.youtube.com/watch?v=pfWRfwmsxA0
  
  *Explicações do aplicativo:*
  O app envia 1 (um) byte de dados para o módulo bluetooth do arduino, os valores enviados pelo app são (Caso você não queira ler o código (Nada te impede de alterar também)):
+
  * Frente (1)
  * Trás (2)
  * Esquerda (4)
