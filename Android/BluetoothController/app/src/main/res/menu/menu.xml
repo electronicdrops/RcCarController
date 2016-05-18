@@ -6,7 +6,7 @@
         />
     <item android:id="@+id/disconectar"
 
-        android:title="Disconectar" />
+        android:title="Desconectar" />
 
 
 </menu>

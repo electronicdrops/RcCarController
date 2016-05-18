@@ -42,4 +42,14 @@
         android:layout_below="@+id/button"
         android:layout_centerHorizontal="true"
         android:onClick="GotoBasicsTwo"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@mipmap/electr"
+        android:onClick="vaiprogit"
+        android:layout_below="@+id/button3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp" />
 </RelativeLayout>
