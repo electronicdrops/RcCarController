@@ -1,8 +1,8 @@
 # Carro de controle remoto RF 
 ### Controlado por Arduino + Android + Bluetooth
-####Tudo disponível aqui para seu conhecimento!
+#### Tudo disponível aqui para seu conhecimento!
 
-#####P.S:Caso deseja apenas o aplicativo acesse: https://play.google.com/store/apps/details?id=bluecontrol.game.olivato.bluetoothcontroller&hl=pt_BR 
+##### P.S:Caso deseja apenas o aplicativo acesse: https://play.google.com/store/apps/details?id=bluecontrol.game.olivato.bluetoothcontroller&hl=pt_BR 
 
 link dos vídeos de apreentação do projeto no youtube: https://www.youtube.com/watch?v=pfWRfwmsxA0
  
